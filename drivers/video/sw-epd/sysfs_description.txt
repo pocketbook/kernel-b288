@@ -1,0 +1,37 @@
+Параметры драйвера EPDC находятся в каталоге /sys/class/graphics/fb0/device:
+
+waveform_binary    (RW) - используемый файл вейвформы
+                          cat waveform.wbf >waveform_binary загружает новую вейвформу.
+waveform_status    (RO) - состояние вейвформы (unknown,ok,updated,error)
+waveform_info      (RO) - информация о вейвформе
+tempsensor         (RW) - использование температурного сенсора: 
+                          ambient - значение сенсора, fixed - фиксированное значение
+temperature        (RW) - при tempsensor=ambient возвращает текущее значение датчика, 
+                          при tempsensor=fixed сюда нужно записать фиксированное значение температуры
+powerdown_delay    (RW) - время от окончания обновления до начала процедуры powerdown (мс)
+powerup_sequence   (RW) - последовательность поднятия напряжений
+                          пример: echo "vdd { 1 vneg vee 4 vpos vgg 4 } vcom 1" >powerup_sequence
+                          (цифра означает задержку в мс, скобки игнорируются)
+                          первым должен идти vdd, последним vcom
+powerdown_sequence (RW) - последовательность снятия напряжений
+                          пример: echo "5 vcom 200 { vgg vpos 5 vee vneg } 100 vdd" >powerdown_sequence
+                          первым должен идти vcom. vdd можно не снимать, если он снимается, то должен
+                          идти последним.
+vcom               (RW) - значение VCOM (только для PMIC на TPSххх)
+slow_motion        (RW) - позволяет визуально наблюдать процесс обновления
+                          echo 10 >slow_motion - замедление обновления в 10 раз
+debuglevel         (RW) - 0:none, 1:error, 2:info, 3:debug, 4:frame_debug
+timings/fbl        (RW) - FBL
+timings/fsl        (RW) - FSL
+timings/fel        (RW) - FEL
+timings/lbl        (RW) - LBL
+timings/lsl        (RW) - LSL
+timings/lel        (RW) - LEL
+timings/gdck_sta   (RW) - начало GDCK относительно LSL (-LBL...LBL+LDL)
+timings/gdck_high  (RW) - сколько тактов SDCLK удерживать GDCK
+timings/sdoe_mode  (RW) - режим SDOE (line или frame)
+timings/gdsp_offset(RW) - смещение SPV относительно фронта GDCK (0..100%)
+timings/pixclk     (RW) - текущее значение частоты SDCLK (пересчитывается на основании других параметров)
+                          запись в timings/pixclk принудительно выставляет частоту
+timings/framerate  (RO) - фреймрейт
+

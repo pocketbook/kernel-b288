@@ -1,0 +1,14 @@
+一、用最新TP固件替换当前目录B188_1C70_1203.i固件。
+二、 ektf2k_5B.c
+	   static uint8_t file_fw_data[] = {
+				#include "B188_1C70_1203.i"
+		};此结构体与固件名一致，否则编译不过
+		打开#define IAP_PORTION            	0
+三、编译TP驱动烧录即可升级，或者直接替换/vendor/modules/ektf2k_5B.ko; adb shell chmod 0644 /vendor/modules/ektf2k_5B.ko 重启。
+	升级成功后，系统会自动重启。
+四、代码里面会进行逻辑判断固件版本，大于当前的版本则进行升级
+	 	if (New_FW_VER > (FW_VERSION)) { 
+		         Update_FW_One(client, RECOVERY);
+		   	}
+
+		

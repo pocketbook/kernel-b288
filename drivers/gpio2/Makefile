@@ -1,0 +1,1 @@
+obj-$(CONFIG_SUNXI_GPIO2)   += sunxi-gpio2.o

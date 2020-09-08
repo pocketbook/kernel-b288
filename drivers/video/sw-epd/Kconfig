@@ -1,0 +1,23 @@
+#
+# Video configuration for sunxi platform
+#
+
+menu "Video support for sunxi"
+	depends on FB
+
+config FB_CONSOLE_SUNXI
+  bool "Framebuffer Console Support(sunxi)"
+  select FB_CFB_FILLRECT
+  select FB_CFB_COPYAREA
+  select FB_CFB_IMAGEBLIT
+  default n
+  ---help---
+
+config SWEPD
+  tristate "Software EPDC driver support for B288"
+  depends on (ARCH_SUNXI)
+  default n
+  ---help---
+
+endmenu
+

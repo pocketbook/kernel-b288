@@ -1,0 +1,2 @@
+config TOUCHSCREEN_MSG2138
+	tristate "MSG2138 touchscreens support"

@@ -1,0 +1,2 @@
+config TOUCHSCREEN_8692TP
+	tristate "8692 TP touchscreens support"

@@ -1,0 +1,61 @@
+	  
+config TOUCHSCREEN_CYPRESS_CYTTSP4
+	tristate "Cypress TrueTouch Gen4 Touchscreen Driver"
+	help
+	  Core driver for Cypress TrueTouch(tm) Standard Product
+	  Generation4 touchscreen controllers.
+
+	  Say Y here if you have a Cypress Gen4 touchscreen.
+
+	  If unsure, say N.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called cyttsp4.
+	  
+choice
+	bool "Cypress TrueTouch Gen4 MultiTouch Protocol"
+	depends on TOUCHSCREEN_CYPRESS_CYTTSP4
+	default TOUCHSCREEN_CYPRESS_CYTTSP4_MT_B
+	help
+	  This option controls which MultiTouch protocol will be used to
+	  report the touch events.
+	  
+config TOUCHSCREEN_CYPRESS_CYTTSP4_MT_A
+	bool "Protocol A"
+	help
+	  Select to enable MultiTouch touch reporting using protocol A
+	  on Cypress TrueTouch(tm) Standard Product Generation4 touchscreen
+	  controller.
+
+config TOUCHSCREEN_CYPRESS_CYTTSP4_MT_B
+	bool "Protocol B"
+	help
+	  Select to enable MultiTouch touch reporting using protocol B
+	  on Cypress TrueTouch(tm) Standard Product Generation4 touchscreen
+	  controller.
+
+endchoice 
+
+
+
+
+
+
+config TOUCHSCREEN_CYPRESS_CYTTSP4_BUTTON
+	bool "Cypress TrueTouch Gen4 MultiTouch CapSense Button"
+	depends on TOUCHSCREEN_CYPRESS_CYTTSP4
+	help
+	  Say Y here to enable CapSense reporting on Cypress TrueTouch(tm)
+	  Standard Product Generation4 touchscreen controller.
+
+	  If unsure, say N.
+
+config TOUCHSCREEN_CYPRESS_CYTTSP4_PROXIMITY
+	bool "Cypress TrueTouch Gen4 Proximity"
+	depends on TOUCHSCREEN_CYPRESS_CYTTSP4
+	help
+	  Say Y here to enable proximity reporting on Cypress TrueTouch(tm)
+	  Standard Product Generation4 touchscreen controller.
+
+	  If unsure, say N.
+

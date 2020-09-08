@@ -1,0 +1,30 @@
+/*
+ * Allwinner Technology CO., Ltd. sun50iw1p1 fpga board.
+ *
+ * fpga board support.
+ */
+
+/dts-v1/;
+
+#include "sun8iw10p1.dtsi"
+
+/{
+
+	soc@01c00000 {
+
+		bt:bt {
+			compatible = "allwinner,sunxi-bt";
+			clocks = <&clk_losc_out>;
+			bt_power  = "axp227_aldo1";
+			bt_rst_n = <&pio PG 1 1 1 1 0>;
+			bt_hostwake = <&pio PG 0 6 0 0 0>;		
+			status = "okay";
+		};
+		btlpm:btlpm {
+			compatible = "allwinner,sunxi-btlpm";
+			uart_index = <3>;
+			bt_hostwake = <&pio PG 0 6 0 0 0>;
+			status = "okay";
+		};
+	};
+};

@@ -1,0 +1,4 @@
+config  XRZ_ENCRYPT_CS
+	bool "xrz encrypy cs control"
+	default n
+	help

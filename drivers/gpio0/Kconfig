@@ -1,0 +1,9 @@
+#
+# Allwinner sunxi-gpio0 driver.
+#
+config SUNXI_GPIO0
+    tristate "SUNXI axp gpio0 irq enable"
+    default n
+    help
+      This enables support for the axp gpio0 irq 
+

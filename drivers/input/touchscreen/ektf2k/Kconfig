@@ -1,0 +1,10 @@
+#
+#  Touchscreen driver configuration
+#
+config  TOUCHSCREEN_EKTF2K
+       tristate  "ektf2k touchscreen driver"      
+       depends on INPUT && I2C
+       default m
+       help
+         ektf2k    
+         
